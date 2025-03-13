@@ -34,7 +34,6 @@ header {
     color: #fbf6ed;
     text-align: center;
     padding: 40px;
-    border-radius: 10px;
     margin-bottom: var(--margin-bottom);
 }
 
@@ -85,7 +84,7 @@ footer {
     background-color: var(--color4);
     color: #fbf6ed;
     margin-top: var(--margin-bottom);
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }
 
 .centered-container {
