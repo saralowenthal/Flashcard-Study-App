@@ -1,4 +1,4 @@
-const count=1; //keep track of card in array and progress,increments for every new card- starts at 1 because 1st card is displayed right away
+const count=1; //keep track of card in array,increments for every new card- starts at 1 because 1st card is displayed right away
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
