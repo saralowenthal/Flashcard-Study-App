@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Name</title>
+    <title>Flashcard Study App</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to Our Project</h1>
+        <h1>Dadabase: The Ultimate Dad Joke Collection</h1>
     </header>
     <main>
-        <p>Placeholder content for the main section.</p>
+        <p>
+            Welcome to Dadabase, where you can study and enjoy a collection of dad jokes! This app lets you flip through digital flashcards to reveal the punchline to each joke. 
+            You can also mark jokes you already know, track your progress, and keep having fun while learning some classic dad humor.
+        </p>
 
-        <div class="card-wrapper">
-            <div class="card-body">
-              <div class="card-front">
-                <p>Front</p>
-              </div>
-              <div class="card-back">
-                <p>Back</p>
-              </div>
+        <h2>Main Features:</h2>
+        <ul>
+            <li><strong>Flip a Card:</strong> Click a card to reveal the punchline with a smooth flip animation.</li>
+            <li><strong>Randomized Deck:</strong> The deck shuffles at the start to keep the session fresh.</li>
+            <li><strong>Mark Known Jokes:</strong> Mark jokes you already know as "Known" to remove them from the deck.</li>
+            <li><strong>Track Your Progress:</strong> View how many jokes are left to learn and how many you've mastered.</li>
+            <li><strong>Interactive Animation:</strong> Enjoy a fun flip animation when revealing the punchline.</li>
+        </ul>
+        
+        <h2>How It Works:</h2>
+        <ol>
+            <li><strong>Start the App:</strong> Open the app and browse a deck of dad jokes displayed on flashcards.</li>
+            <li><strong>Flip a Card:</strong> Click on a card to reveal the punchline. The front shows the joke setup, and the back reveals the punchline.</li>
+            <li><strong>Mark Known Jokes:</strong> If you know the punchline, click the "Mark as Known" button to remove it from the active deck.</li>
+            <li><strong>Move to the Next Joke:</strong> Click the Next button to move to the next joke.</li>
+            <li><strong>Track Your Progress:</strong> The progress bar shows how many jokes are left and how many you've mastered.</li>
+            <li><strong>Shuffling the Deck:</strong> Refresh the page to shuffle the jokes and start a new session.</li>
+        </ol>
+        
+        <div class="centered-container">
+			<div class="card-wrapper">
+            	<div class="card-body">
+              	<div class="card-front">
+                	<p>Front</p>
+              	</div>
+              	<div class="card-back">
+                	<p>Back</p>
+              	</div>
             </div>
+        	</div>
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <button>Next</button>
+            <button>Mark as known</button>
+        <div id="known-count">
+            <p><strong>Known Jokes: <span id="known-count-value">0</span></strong></p>
+        </div>
         </div>      
-
     </main>
     <footer>
         <p>&copy 2025 Project Name</p>
