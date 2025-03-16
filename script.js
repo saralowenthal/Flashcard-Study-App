@@ -29,5 +29,15 @@ const displayValue=()=>{
     count++; //increment count each time card is displayed (to get to next card)
 }
 
+card-wrapper.addEventListener("click", flipCard); //when click on card, call flip card function
 
-//onClick card- display card.back
+//trigger css to flip and display answer on back
+function flipCard(){
+    const flipCardElement = document.querySelector('.card-body');
+
+    // Toggle the 'flipped' class to trigger the flip animation
+    flipCardElement.classList.toggle('flipped');
+
+  // After flipping, change the value on the back side
+    document.getElementById("card-back").innerHTML = gameCards[count].back;
+}
