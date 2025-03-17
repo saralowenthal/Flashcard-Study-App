@@ -108,7 +108,7 @@ button:hover {
 }
 
 /* Progress Bar */
-.progress-bar {
+/* .progress-bar {
     background-color: var(--color5);
     height: 20px;
     width: 100%;
@@ -121,6 +121,14 @@ button:hover {
     height: 100%;
     background-color: var(--color2);
     border-radius: 10px;
+} */
+#remaining-count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* This moves the Remaining Jokes counter down a bit becasue it was not aligned before */
+    font-size: 15;
+    color: var(--color3);
 }
 
 #known-count {
