@@ -137,10 +137,11 @@ button:hover {
     width: 50vw;
     height: 25vw;
     perspective: 1000px;
+    position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
+    align-items: center; 
+    margin: 0 auto; 
 }
 
 .card-body {
