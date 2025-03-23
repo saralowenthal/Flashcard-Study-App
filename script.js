@@ -1,9 +1,11 @@
 let count=0; //keep track of card in array,increments for every new card
 
+
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
 });
 let gameCards;
+
 
 //import from json file, shuffle, and store in gameCards
 fetch('./flashcards.json')
@@ -18,7 +20,7 @@ fetch('./flashcards.json')
     gameCards=shuffleCards(flashcards); // Call shuffleCards function with the parsed data
     console.log("Shuffled cards:", gameCards);
     document.querySelector(".card-front").innerHTML = gameCards[0].front; // Front side
-
+    increaseProgress(); // Increase progress bar
   })
   .catch(error => {
     console.error('Error loading JSON:', error);
@@ -49,15 +51,42 @@ const displayValue=()=>{
         console.error("No more cards to display, or gameCards is undefined.");
     }
 };
-    
 
+
+//increase progress bar
+function increaseProgress() {
+  let progressBar = document.getElementById("progress-bar");
+  if (progressBar.value < progressBar.max) {
+      progressBar.value += 4; // Increase by 4%
+  } else if (progressBar.value = progressBar.max) {
+        progressBar.classList.add("end");
+    }
+}
+
+
+//add to known count
+function addToKnown() {
+    const knownCount = document.getElementById("known-count-value");
+    knownCount.textContent = parseInt(knownCount.textContent, 10) + 1;
+    displayValue();
+    increaseProgress();
+  }
+
+  
 //when nextButton is clicked
 const nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", displayValue); //onClick next button, call display value and disply vale on front of card
+nextButton.addEventListener("click", () => { displayValue(); increaseProgress(); });
+
+
+//when knownButton is clicked
+const knownButton = document.getElementById("knownButton");
+knownButton.addEventListener("click", () => { addToKnown(); });
 
 
 //when click on card, call flip card function
 document.querySelector(".card-wrapper").addEventListener("click", flipCard); 
+
+
 //trigger css to flip and display answer on back
 function flipCard(){
     const flipCardElement = document.querySelector('.card-wrapper');
