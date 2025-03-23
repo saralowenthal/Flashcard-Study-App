@@ -207,3 +207,9 @@ button:hover {
     background-color: var(--color5);
     transform: rotateX(180deg);
 }
+
+#ending {
+    color: var(--color4);
+    font-weight: bold;
+    font-size: var(--heading-font-size);
+}

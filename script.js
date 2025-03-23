@@ -1,5 +1,5 @@
 let count=0; //keep track of card in array,increments for every new card
-
+let knownCount = 0; //keep track of known cards
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
@@ -48,10 +48,20 @@ const displayValue=()=>{
         count++; // Increment count
         document.querySelector(".card-front").innerHTML = gameCards[count].front;//displays the front of the card you are up to in card-front
     } else {
-        console.error("No more cards to display, or gameCards is undefined.");
+      endGame();
+      console.error("No more cards to display, or gameCards is undefined.");
     }
 };
 
+
+//confetti
+function showConfetti() {
+  confetti({
+      particleCount: 200,
+      spread: 80,
+      origin: { y: 0.6 }
+  });
+}
 
 //increase progress bar
 function increaseProgress() {
@@ -59,20 +69,30 @@ function increaseProgress() {
   if (progressBar.value < progressBar.max) {
       progressBar.value += 4; // Increase by 4%
   } else if (progressBar.value = progressBar.max) {
-        progressBar.classList.add("end");
-    }
+    endGame();
+  }
+}
+
+//end game
+function endGame() {
+  let progressBar = document.getElementById("progress-bar");
+  progressBar.classList.add("end");
+  showConfetti();
+  console.log("knownCount:", knownCount);
+  document.getElementById("ending").innerHTML = `You mastered ${knownCount} flashcards!`;
 }
 
 
 //add to known count
 function addToKnown() {
-    const knownCount = document.getElementById("known-count-value");
-    knownCount.textContent = parseInt(knownCount.textContent, 10) + 1;
+    const knownCountValue = document.getElementById("known-count-value");
+    knownCountValue.textContent = parseInt(knownCountValue.textContent, 10) + 1;
+    knownCount++; // updating global variable
     displayValue();
     increaseProgress();
   }
 
-  
+
 //when nextButton is clicked
 const nextButton = document.getElementById("nextButton");
 nextButton.addEventListener("click", () => { displayValue(); increaseProgress(); });
