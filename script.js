@@ -4,7 +4,7 @@ let knownCount = 0; //keep track of known cards
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
 });
-let gameCards;
+let gameCards = [];
 
 
 //import from json file, shuffle, and store in gameCards
@@ -75,7 +75,7 @@ function increaseProgress() {
   let progressBar = document.getElementById("progress-bar");
   if (progressBar.value < progressBar.max) {
       progressBar.value += 4; // Increase by 4%
-  } else if (progressBar.value = progressBar.max) {
+  } else if (progressBar.value >= progressBar.max) {
     endGame();
   }
 }
@@ -86,8 +86,8 @@ function endGame() {
   progressBar.classList.add("end");
   showConfetti();
   console.log("knownCount:", knownCount);
-  document.getElementById("ending").innerHTML = `End of the game! Great job! You mastered ${knownCount} flashcards!`;
-  count++; //increase count to 25 at end
+  document.getElementById("ending").innerHTML = `Great job! You mastered ${knownCount} flashcards!`;
+  count++; //increases at end so can't click on mark as known
 }
 
 
