@@ -148,7 +148,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 20px; /* This moves the Known Jokes counter down a bit becasue it was not aligned before */
-    font-size: 15;
+    font-size: 15px;
     color: var(--color3);
 }
 

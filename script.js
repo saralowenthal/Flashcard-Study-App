@@ -79,7 +79,7 @@ function endGame() {
   progressBar.classList.add("end");
   showConfetti();
   console.log("knownCount:", knownCount);
-  document.getElementById("ending").innerHTML = `You mastered ${knownCount} flashcards!`;
+  document.getElementById("ending").innerHTML = `End of the game! Great job! You mastered ${knownCount} flashcards!`;
 }
 
 
