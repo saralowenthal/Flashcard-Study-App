@@ -108,35 +108,47 @@ button:hover {
 }
 
 /* Progress Bar */
-/* .progress-bar {
+/* (Background)*/
+.progress-bar {
     background-color: var(--color5);
     height: 20px;
     width: 100%;
     border-radius: 10px;
     margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    color: var(--color5);
 }
 
+/* (Progress value)*/
 .progress-bar span {
     display: block;
     height: 100%;
+    width: 0%;
     background-color: var(--color2);
     border-radius: 10px;
-} */
-#remaining-count{
+}
+
+.progress-bar span.end {
+    background-color: var(--color5);
+}
+
+
+/* #remaining-count{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px; /* This moves the Remaining Jokes counter down a bit becasue it was not aligned before */
-    font-size: 15;
+    /* font-size: 15;
     color: var(--color3);
-}
+} */
 
 #known-count {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px; /* This moves the Known Jokes counter down a bit becasue it was not aligned before */
-    font-size: 15;
+    font-size: 15px;
     color: var(--color3);
 }
 
@@ -181,6 +193,7 @@ button:hover {
     border-radius: 10px;
     font-size: var(--subheading-font-size);
     font-weight: bold;
+    padding: 40px;
 }
 
 .card-front {
@@ -193,4 +206,10 @@ button:hover {
     color: var(--color2);
     background-color: var(--color5);
     transform: rotateX(180deg);
+}
+
+#ending {
+    color: var(--color4);
+    font-weight: bold;
+    font-size: var(--heading-font-size);
 }

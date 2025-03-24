@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flashcard Study App</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -30,13 +31,13 @@
         <ol>
             <li><strong>Start the App:</strong> Open the app and browse a deck of dad jokes displayed on flashcards.</li>
             <li><strong>Flip a Card:</strong> Click on a card to reveal the punchline. The front shows the joke setup, and the back reveals the punchline.</li>
-            <li><strong>Mark Known Jokes:</strong> If you know the punchline, click the "Mark as Known" button to remove it from the active deck.</li>
+            <li><strong>Mark Known Jokes:</strong> If you know the punchline, click "Mark as Known" to skip to the next joke and track your known jokes.</li>
             <li><strong>Move to the Next Joke:</strong> Click the Next button to move to the next joke.</li>
             <li><strong>Track Your Progress:</strong> The progress bar shows how many jokes are left and how many you've mastered.</li>
             <li><strong>Shuffling the Deck:</strong> Refresh the page to shuffle the jokes and start a new session.</li>
         </ol>
         
-        <div class="card-wrapper">
+        <div id = "ending" class ="card-wrapper">
             <div class="card-body">
               <div class="card-front">
                 <p>Front</p>
@@ -46,20 +47,20 @@
               </div>
             </div>
         </div>
-
         <div class="centered-container">
-            <div id="remaining-count">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <!-- <div id="remaining-count">
                 <p><strong>Remaining Jokes: <span id="remaining-count-value">25</span></strong></p>
-            </div>
+            </div> -->
             <button id="nextButton">Next</button>
-            <button>Mark as known</button>
+            <button id="knownButton">Mark as known</button>
         <div id="known-count">
             <p><strong>Known Jokes: <span id="known-count-value">0</span></strong></p>
         </div>
         </div>      
     </main>
     <footer>
-        <p>&copy 2025 Dadabase: The Ultimate Dad Joke Collection</p>
+        <p>&copy; 2025 Dadabase: The Ultimate Dad Joke Collection</p>
     </footer>
 </body>
 </html>

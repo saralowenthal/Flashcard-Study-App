@@ -1,9 +1,11 @@
 let count=0; //keep track of card in array,increments for every new card
+let knownCount = 0; //keep track of known cards
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
 });
 let gameCards;
+
 
 //import from json file, shuffle, and store in gameCards
 fetch('./flashcards.json')
@@ -18,7 +20,7 @@ fetch('./flashcards.json')
     gameCards=shuffleCards(flashcards); // Call shuffleCards function with the parsed data
     console.log("Shuffled cards:", gameCards);
     document.querySelector(".card-front").innerHTML = gameCards[0].front; // Front side
-
+    increaseProgress(); // Increase progress bar
   })
   .catch(error => {
     console.error('Error loading JSON:', error);
@@ -46,18 +48,65 @@ const displayValue=()=>{
         count++; // Increment count
         document.querySelector(".card-front").innerHTML = gameCards[count].front;//displays the front of the card you are up to in card-front
     } else {
-        console.error("No more cards to display, or gameCards is undefined.");
+      endGame();
+      console.error("No more cards to display, or gameCards is undefined.");
     }
 };
-    
+
+
+//confetti
+function showConfetti() {
+  confetti({
+      particleCount: 200,
+      spread: 80,
+      origin: { y: 0.6 }
+  });
+}
+
+//increase progress bar
+function increaseProgress() {
+  let progressBar = document.getElementById("progress-bar");
+  if (progressBar.value < progressBar.max) {
+      progressBar.value += 4; // Increase by 4%
+  } else if (progressBar.value = progressBar.max) {
+    endGame();
+  }
+}
+
+//end game
+function endGame() {
+  let progressBar = document.getElementById("progress-bar");
+  progressBar.classList.add("end");
+  showConfetti();
+  console.log("knownCount:", knownCount);
+  document.getElementById("ending").innerHTML = `End of the game! Great job! You mastered ${knownCount} flashcards!`;
+}
+
+
+//add to known count
+function addToKnown() {
+    const knownCountValue = document.getElementById("known-count-value");
+    knownCountValue.textContent = parseInt(knownCountValue.textContent, 10) + 1;
+    knownCount++; // updating global variable
+    displayValue();
+    increaseProgress();
+  }
+
 
 //when nextButton is clicked
 const nextButton = document.getElementById("nextButton");
-nextButton.addEventListener("click", displayValue); //onClick next button, call display value and disply vale on front of card
+nextButton.addEventListener("click", () => { displayValue(); increaseProgress(); });
+
+
+//when knownButton is clicked
+const knownButton = document.getElementById("knownButton");
+knownButton.addEventListener("click", () => { addToKnown(); });
 
 
 //when click on card, call flip card function
 document.querySelector(".card-wrapper").addEventListener("click", flipCard); 
+
+
 //trigger css to flip and display answer on back
 function flipCard(){
     const flipCardElement = document.querySelector('.card-wrapper');
