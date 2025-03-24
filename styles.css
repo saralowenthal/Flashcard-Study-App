@@ -89,7 +89,9 @@ footer {
     justify-content: center;
     align-items: center; 
     gap: 20px;
-    margin: 0 auto; 
+    margin: 0 auto;
+    width: 50vw;
+    padding: 5px 20px;
 }
 
 button {
@@ -100,16 +102,22 @@ button {
     font-size: 15px;
     cursor: pointer;
     border-radius: 5px;
+    flex-shrink: 0;
     transition: background-color 0.3s ease;
 }
-
 button:hover {
     background-color: var(--color3);
+}
+#knownButton {
+    background-color: var(--color5);
+}
+#knownButton:hover {
+    background-color: var(--color4);
 }
 
 /* Progress Bar */
 /* (Background)*/
-.progress-bar {
+#progress-bar {
     background-color: var(--color5);
     height: 20px;
     width: 100%;
@@ -118,18 +126,30 @@ button:hover {
     position: relative;
     overflow: hidden;
     color: var(--color5);
+    appearance: none;
+    flex-grow: 1;
+}
+#progress-bar::-webkit-progress-bar {
+    background-color: #a4caeb;
+}
+#progress-bar::-moz-progress-bar {
+    background-color: var(--color5);
+}
+#progress-bar::-webkit-progress-value {
+    background-color: var(--color5);
 }
 
 /* (Progress value)*/
-.progress-bar span {
+#progress-bar span {
     display: block;
     height: 100%;
     width: 0%;
     background-color: var(--color2);
     border-radius: 10px;
+    appearance: none;
 }
 
-.progress-bar span.end {
+#progress-bar span.end {
     background-color: var(--color5);
 }
 
@@ -150,6 +170,7 @@ button:hover {
     margin-top: 20px; /* This moves the Known Jokes counter down a bit becasue it was not aligned before */
     font-size: 15px;
     color: var(--color3);
+    flex-shrink: 0;
 }
 
 /* Cards Styles*/
@@ -177,6 +198,7 @@ button:hover {
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .card-wrapper.flipped .card-body {

@@ -4,7 +4,7 @@ let knownCount = 0; //keep track of known cards
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript is loaded and ready!");
 });
-let gameCards;
+let gameCards = [];
 
 
 //import from json file, shuffle, and store in gameCards
@@ -47,7 +47,14 @@ const displayValue=()=>{
     if (gameCards && count < gameCards.length - 1) {
         count++; // Increment count
         document.querySelector(".card-front").innerHTML = gameCards[count].front;//displays the front of the card you are up to in card-front
-    } else {
+        
+        const cardWrapper = document.querySelector('.card-wrapper');
+        //if back of card is showing, flip to front
+        if (cardWrapper.classList.contains('flipped')) {
+            cardWrapper.classList.toggle('flipped');
+        }
+
+      } else {
       endGame();
       console.error("No more cards to display, or gameCards is undefined.");
     }
@@ -68,7 +75,7 @@ function increaseProgress() {
   let progressBar = document.getElementById("progress-bar");
   if (progressBar.value < progressBar.max) {
       progressBar.value += 4; // Increase by 4%
-  } else if (progressBar.value = progressBar.max) {
+  } else if (progressBar.value >= progressBar.max) {
     endGame();
   }
 }
@@ -79,17 +86,20 @@ function endGame() {
   progressBar.classList.add("end");
   showConfetti();
   console.log("knownCount:", knownCount);
-  document.getElementById("ending").innerHTML = `End of the game! Great job! You mastered ${knownCount} flashcards!`;
+  document.getElementById("ending").innerHTML = `Great job! You mastered ${knownCount} flashcards!`;
+  count++; //increases at end so can't click on mark as known
 }
 
 
 //add to known count
 function addToKnown() {
+  if (count<25){ //add to known until game is over
     const knownCountValue = document.getElementById("known-count-value");
     knownCountValue.textContent = parseInt(knownCountValue.textContent, 10) + 1;
     knownCount++; // updating global variable
     displayValue();
     increaseProgress();
+  }
   }
 
 
