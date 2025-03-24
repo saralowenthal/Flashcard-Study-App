@@ -47,14 +47,6 @@ const displayValue=()=>{
     if (gameCards && count < gameCards.length - 1) {
         count++; // Increment count
         document.querySelector(".card-front").innerHTML = gameCards[count].front;//displays the front of the card you are up to in card-front
-        
-        const cardWrapper = document.querySelector('.card-wrapper');
-
-        //if back of card is showing, flip to front
-        if (cardWrapper.classList.contains('flipped')) {
-            cardWrapper.classList.toggle('flipped');
-        }
-
     } else {
       endGame();
       console.error("No more cards to display, or gameCards is undefined.");
@@ -88,20 +80,16 @@ function endGame() {
   showConfetti();
   console.log("knownCount:", knownCount);
   document.getElementById("ending").innerHTML = `End of the game! Great job! You mastered ${knownCount} flashcards!`;
-  count++; //increases at end so can't click on mark as known
 }
 
 
 //add to known count
 function addToKnown() {
-    if (count<25){ //can add all 25 as known (count begins at 0)
-        const knownCountValue = document.getElementById("known-count-value");
-        knownCountValue.textContent = parseInt(knownCountValue.textContent, 10) + 1;
-        knownCount++; // updating global variable
-        displayValue();
-        increaseProgress();
-    }
-    
+    const knownCountValue = document.getElementById("known-count-value");
+    knownCountValue.textContent = parseInt(knownCountValue.textContent, 10) + 1;
+    knownCount++; // updating global variable
+    displayValue();
+    increaseProgress();
   }
 
 
